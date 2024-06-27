@@ -1,17 +1,17 @@
-package ex01.sample02.service;
+package ex01.sample03.service;
 
 import java.util.List;
 
-import ex01.sample03.dao.MemberDAO;
+import ex01.sample03.dao.MemberDAOImpl;
 import ex01.sample03.vo.MemberVO;
 
 public class MemberDAOServiceImpl implements MemberDAOService {
-	private MemberDAO dao;
+	private MemberDAOImpl dao;
 	
 	public MemberDAOServiceImpl() {
-		dao = new MemberDAO();
+		dao = new MemberDAOImpl();
 	}
-	
+
 	@Override
 	public List<MemberVO> listMembers() {
 		List<MemberVO> list = dao.listMembers();
@@ -21,8 +21,9 @@ public class MemberDAOServiceImpl implements MemberDAOService {
 	@Override
 	public int registerMember(MemberVO memberVO) {
 		
-		int result = result = dao.registerMember(memberVO);
-		
-		return 0;
+		int result =  result = dao.registerMember(memberVO);
+	 
+		return result;
 	}
+
 }

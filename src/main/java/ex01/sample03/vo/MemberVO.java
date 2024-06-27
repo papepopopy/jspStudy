@@ -2,9 +2,13 @@ package ex01.sample03.vo;
 
 import java.sql.Date;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 
 //데이터 보관용
 public class MemberVO {
