@@ -23,10 +23,10 @@ public class SetServletScope extends HttpServlet {
 		String mapping = req.getServletPath();
 		String uri = req.getRequestURI();
 		
-		System.out.println(context);
-		System.out.println(url);
-		System.out.println(mapping);
-		System.out.println(uri);
+		System.out.println("context : " + context);
+		System.out.println("url : " + url);
+		System.out.println("mapping : " + mapping);
+		System.out.println("uri : " + uri);
 		
 		//-----------------------------
 		
