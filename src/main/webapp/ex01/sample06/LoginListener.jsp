@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>회원 가입</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <style>
 	.loginBtn {
@@ -17,9 +17,9 @@
 <body>
 <div class="container ">
 	<div class="login" >
-		<h3>로그인</h3>
+		<h3>회원 가입</h3>
 		<hr>
-		<form action="/webjsp/loginfilter" method="get" name="frmMember">
+		<form action="/webjsp/loginlistener" method="get" name="frmMember">
 			<div>
 				<label>아이디:</label>
 				<input type="text" name="user_id" class="form-control">
