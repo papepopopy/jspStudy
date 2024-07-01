@@ -1,26 +1,33 @@
-package ex01.sample01;
+package ex01.sample04;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@SuppressWarnings("serial")
-public class FirstServlet extends HttpServlet {
-	@Override
-	public void init() throws ServletException {
-		// 서블릿 요청 처음 한번만 호출
-		System.out.println("init() 메서드 호출");
-		
-	}
-	@Override
+
+@WebServlet(
+		urlPatterns = { 
+				"/sInit", 
+				"/sInit2"
+		}, 
+		initParams = { 
+				@WebInitParam(name = "email", value = "hong@gmail.com"), 
+				@WebInitParam(name = "tel", value = "010-1234-5678")
+		})
+
+public class initParamServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    public initParamServlet() {
+    }
+
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 서블릿 요청(get) 시 매번 호출
-		System.out.println("doGet() 메서드 호출");
-		
 		resp.setContentType("text/html; charset=utf-8");
 		PrintWriter writer = resp.getWriter();
 		
@@ -31,11 +38,6 @@ public class FirstServlet extends HttpServlet {
 		writer.print("<h1>SevletConfig 객체 있는 데이터 가져오기</h1>");
 		writer.print(email + "<br />" +tel);
 		writer.print("</body></html>");
-		
 	}
-	@Override
-	public void destroy() {
-		// 서블릿 기능 수행후 메모리 소멸 시 호출
-		System.out.println("destory() 메서드 호출");
-	}
+
 }

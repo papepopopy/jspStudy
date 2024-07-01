@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바 스크립트에서 쿠키</title>
+<script type="text/javascript">
+//	window.onload = function(){}; //함수 실행 되었을때 
+	window.onload = pageLoad; //로딩 되었을때
+	
+	function pageLoad() {
+		notShowPop = getCookieValue(); //쿠키 값 호출
+		
+		if(notShowPop != "true") {
+			//새창 생성
+			window.open (
+					"popup.html", "pop", "width=400, height=400, history=no, resizeable=no, status=no, scrollbars=yes, menubar=no");
+		}
+	}
+	
+	// 쿠키값 추출
+	function getCookieValue(){
+		var result = "false";
+		
+		if (document.cookie != "") {
+			//쿠키 값이 있을 시
+			console.log("쿠키 정보 : "+ document.cookie);
+			
+			cookie = document.cookie.split(";"); //분리하여 배열에 저장
+			for (var i=0; i<cookie.length; i++) {
+				element = cookie[i].split("=") //key, value 값으로 분리
+				value = element[0];
+				value = value.replace(/^\s*/,'') //공백 제거
+				
+				if (value=="notShowPop") {
+					result = element[1]; //true or fales
+				}
+			}// end for
+		}//end if 
+		return result;
+	}
+	
+	//쿠키값 삭제
+	function deleteCookie() {
+		document.cookie = "notShowPop="+"false" + "; path=/; expires=-1" 
+		
+	}
+</script>
+</head>
+<body>
+	<div class = "container">
+	
+		<input class="btn btn-success" type="button" value = "쿠키 삭제" onClick="deleteCookie();">
+	</div>
+</body>
+</html>

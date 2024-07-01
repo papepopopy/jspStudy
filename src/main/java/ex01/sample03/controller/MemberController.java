@@ -30,10 +30,26 @@ public class MemberController extends HttpServlet {
 	protected void doHandler(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("===> MemberController Servlet...");
 		
+		
+		
 		// controller -> service에게 요청 -> dao에게 요청
 		MemberDAOServiceImpl memberDAOServiceImpl = new MemberDAOServiceImpl();
+
+		req.setCharacterEncoding("utf-8");
+		String action = req.getPathInfo();
+		
+		String command = req.getParameter("command");
+		System.out.println("command : "+command);
+		System.out.println("action : "+action);
+		
+		if (action != null && action.equals("/action")) {
+			System.out.println("회원가입 dao");
+		} else if(action != null && action.equals())
+		
+		
 		
 		List<MemberVO> list = memberDAOServiceImpl.listMembers();
+		
 		list.stream().forEach( member -> {
 			System.out.println(member.getId());
 			System.out.println(member.getPwd());
